@@ -2,7 +2,7 @@ const express = require("express");
 const path = require("path");
 const hbs = require("hbs");
 const app = express();
-
+const forecast = require("./utils/forecast");
 // Defined paths for Express config
 const publicDirectoryPath = path.join(__dirname, "../public");
 const viewsPath = path.join(__dirname, "../templates/views");
@@ -40,6 +40,33 @@ app.get("/help/*", (req, res) => {
     title: "Help",
     name: "Nguyet Doan",
     message: "Help article not found",
+  });
+});
+
+app.get("/products", (req, res) => {
+  if (!req.query.search) {
+    res.send({
+      error: "You must provide a search term",
+    });
+    return;
+  }
+
+  console.log(req.query.search);
+  res.send({
+    products: [],
+  });
+});
+
+app.get("/weather", (req, res) => {
+  if (!req.query.address) {
+    res.send({ error: "You must provide an address" });
+    return;
+  }
+
+  forecast(req.query.address, (err, data) => {
+    if (err) {
+      res.send({ err });
+    } else res.send(data);
   });
 });
 
