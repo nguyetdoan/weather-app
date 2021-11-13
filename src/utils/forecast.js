@@ -14,7 +14,9 @@ const forecast = (address, callback) => {
           body.current.weather_descriptions[0] +
           ". It is currently " +
           body.current.temperature +
-          " degress out. There is a " +
+          " degrees out. It feels like " +
+          body.current.feelslike +
+          " degrees out. There is a " +
           body.current.precip +
           "% chance of rain.",
         location: body.request.query,
