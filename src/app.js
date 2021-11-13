@@ -59,7 +59,7 @@ app.get("/products", (req, res) => {
 
 app.get("/weather", (req, res) => {
   if (!req.query.address) {
-    res.send({ error: "You must provide an address" });
+    res.send({ err: "You must provide an address" });
     return;
   }
 

@@ -7,11 +7,17 @@ const forecast = (address, callback) => {
     if (error) {
       callback("Unable to connect to weather service!", undefined);
     } else if (body.error) {
-      callback("Unable to find location", undefined);
+      callback("Unable to find location. Try another search", undefined);
     } else {
       callback(undefined, {
-        forecast: body.current.weather_descriptions[0],
-        location: body.location.name,
+        forecast:
+          body.current.weather_descriptions[0] +
+          ". It is currently " +
+          body.current.temperature +
+          " degress out. There is a " +
+          body.current.precip +
+          "% chance of rain.",
+        location: body.request.query,
       });
     }
   });

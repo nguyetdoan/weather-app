@@ -45,3 +45,24 @@ header a {
 .portrait {
   width: 250px;
 }
+
+form {
+  margin: 32px 0;
+}
+
+input {
+  border: 1px solid #cccccc;
+  padding: 8px;
+}
+
+button {
+  cursor: pointer;
+  border: 1px solid #cccccc;
+  padding: 8px;
+  background-color: #888888;
+  color: white;
+}
+
+#message-two {
+  margin-top: 16px;
+}
